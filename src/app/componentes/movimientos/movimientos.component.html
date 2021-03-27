@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-button (click)="salir()" slot="end" fill="clear">
+        <ion-icon name="close" color="light"></ion-icon>
+    </ion-button>
+    <ion-title>
+        Detalle Movimientos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div *ngIf="mov==1">
+    <ion-item *ngFor="let movimiento of movimientos">
+      <ion-label  class="ion-text-wrap" >
+          <ion-col >{{movimiento.fecha}}</ion-col>
+          <ion-col style="text-align: right;"  size=4 >{{movimiento.tipoMovimiento}}</ion-col>
+          <ion-col>${{movimiento.valor|number}}</ion-col>
+        </ion-label>
+   </ion-item>
+  </div>
+
+  <div *ngIf="mov==0" >
+      <div style="margin-top: 50%; text-align: center;">
+        No existen movimientos para este producto.
+      </div>
+  </div>
+ 
+</ion-content>

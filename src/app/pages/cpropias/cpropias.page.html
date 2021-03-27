@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-button slot="start" routerLink="/tranferencias" fill="clear"> 
+      <ion-icon name="arrow-back-outline" color="light"></ion-icon>
+    </ion-button> 
+    <ion-title>
+        T. Cuentas Propias
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Producto Destino</ion-label>
+    <ion-select interface="action-sheet" name="origen" [(ngModel)]="origen" (ionChange)="validaSaldoO()">
+      <ion-select-option *ngFor="let p of productos" value="{{p.numero}}">
+          <p *ngIf="p.tipo==1"> Cuenta Ahorros - {{p.numero}}</p>
+          <p *ngIf="p.tipo==2"> Cuenta Corriente - {{p.numero}}</p>
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+<ion-item>
+  <ion-label position="stacked">Producto Destino</ion-label>
+  <ion-select interface="action-sheet" name="destino"  [(ngModel)]="destino" (ionChange)="validaSaldoD()">
+    <ion-select-option *ngFor="let p of productos"   value="{{p.numero}}" >
+        <p *ngIf="p.tipo==1"> Cuenta Ahorros - {{p.numero}}</p>
+        <p *ngIf="p.tipo==2"> Cuenta Corriente - {{p.numero}}</p>
+    </ion-select-option>
+  </ion-select>
+</ion-item>
+
+<ion-item>
+  <ion-label position="stacked">Valor</ion-label>
+  <ion-input type="email" placeholder="$" [(ngModel)]="valor" name="valor"></ion-input>
+</ion-item>
+
+<div style="text-align: center; margin-top: 10px;">
+  <ion-button (click)="aceptar()" color="dark">Aceptar</ion-button>
+</div>
+</ion-content>

@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-button slot="start" routerLink="/home" fill="clear"> 
+      <ion-icon name="arrow-back-outline" color="light"></ion-icon>
+    </ion-button> 
+    <ion-title>
+        Tranferencias
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-item routerLink="/cpropias">
+    <ion-icon slot="start" name="caret-forward-outline"></ion-icon>
+    <ion-label>Cuentas Propias</ion-label>
+</ion-item>
+<ion-item routerLink="/cterceros">
+  <ion-icon slot="start" name="caret-forward-outline"></ion-icon>
+  <ion-label>Cuentas de Terceros</ion-label>
+</ion-item>
+</ion-content>

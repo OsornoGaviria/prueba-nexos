@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiBDService } from '../../servicios/api-bd.service';
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ export class LoginPage implements OnInit {
 
   userName; userPass; dataUser;
   
-  constructor(private api: ApiBDService) {}
+  constructor(private api: ApiBDService, private route: Router) {}
 
   ngOnInit() {
   }
@@ -29,8 +30,13 @@ export class LoginPage implements OnInit {
       this.api.Login(x).subscribe(res=>{
          this.dataUser=res;
          if(this.dataUser!=undefined){
-           console.log(this.dataUser)
-           alert(this.dataUser['nombre'])
+            for(var x=0; x<this.dataUser.length; x++){
+              if(this.dataUser[x]['identificacion']!=undefined){
+                window.localStorage['IdUsuario']=this.dataUser[x]['identificacion'];   
+                this.route.navigate(['/home']);
+              }
+             
+            }
          }
       })
     
