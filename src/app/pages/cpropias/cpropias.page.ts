@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiBDService } from '../../servicios/api-bd.service';
 import { ModalController } from '@ionic/angular';
-
+import { ErrorComponent } from '../../componentes/error/error.component';
+import { ExitoComponent } from '../../componentes/exito/exito.component';
 
 @Component({
   selector: 'app-cpropias',
@@ -33,15 +34,15 @@ export class CpropiasPage implements OnInit {
 
   aceptar(){
     if(this.origen==undefined || this.origen==""){
-      alert("Seleccione el producto de origen")
+      this.errorAlert("Seleccione el producto de origen")
     }else if(this.destino==undefined || this.destino==""){
-      alert("Seleccione el producto de destino")
+      this.errorAlert("Seleccione el producto de destino")
     }else if(this.origen==this.destino){
-      alert("No puedes tranferir fondos a una misma cuenta")
+      this.errorAlert("No puedes tranferir fondos a una misma cuenta")
     }else if(this.valor==undefined || this.valor=="" || this.valor==0){
-      alert("Ingrese el valor a tranferir")
+      this.errorAlert("Ingrese el valor a tranferir")
     }else if(parseInt(this.valor) > parseInt(this.saldoOrigen)){
-      alert("Fondos insuficientes")
+      this.errorAlert("Fondos insuficientes")
     }else{
     
       let x = {
@@ -54,8 +55,8 @@ export class CpropiasPage implements OnInit {
         idcliente: this.IdUsusario,
       }
       this.api.Tranferencia(x).subscribe(res=>{
-       
-        console.log(res)
+       this.exito(res);
+       this.route.navigate(['/home'])
       })
 
     }
@@ -69,7 +70,6 @@ export class CpropiasPage implements OnInit {
     this.api.validaSaldo(x).subscribe(res=>{
       this.saldoOrigen=res;
       this.saldoOrigen=this.saldoOrigen.saldo;
-      console.log(this.saldoOrigen)
     })
   }
 
@@ -81,9 +81,37 @@ export class CpropiasPage implements OnInit {
     this.api.validaSaldo(x).subscribe(res=>{
       this.saldoDestino=res;
       this.saldoDestino=this.saldoDestino.saldo;
-      console.log(this.saldoDestino)
     })
   }
 
+  async errorAlert(data){
+    const modal = await this.modal.create({
+      component: ErrorComponent,
+      cssClass: 'my-custom-modal-css-alert',
+      componentProps:{
+       data: data
+      },
+      showBackdrop:true,
+      backdropDismiss:false,
+    } )
+ 
+   return await modal.present();  
+ 
+  }
+
+  async exito(data){
+    const modal = await this.modal.create({
+      component: ExitoComponent,
+      cssClass: 'my-custom-modal-css-alert',
+      componentProps:{
+       data: data
+      },
+      showBackdrop:true,
+      backdropDismiss:false,
+    } )
+ 
+   return await modal.present();  
+ 
+  }
   
 }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiBDService } from '../../servicios/api-bd.service';
+import { ErrorComponent } from '../../componentes/error/error.component';
+import { ModalController } from '@ionic/angular';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -10,7 +13,7 @@ export class LoginPage implements OnInit {
 
   userName; userPass; dataUser;
   
-  constructor(private api: ApiBDService, private route: Router) {}
+  constructor(private api: ApiBDService, private route: Router, private modal: ModalController) {}
 
   ngOnInit() {
   }
@@ -18,9 +21,9 @@ export class LoginPage implements OnInit {
 
   Login(){
     if(this.userName=='' || this.userName==undefined){
-        alert("Ingrese su nombre de usuario")
+        this.errorAlert("Ingrese su nombre de usuario")
     }else if(this.userPass=='' || this.userPass==undefined){
-      alert("Ingrese su contraseña")
+      this.errorAlert("Ingrese su contraseña")
     }else{
       let x = {
         funcion: 'Login',
@@ -29,19 +32,38 @@ export class LoginPage implements OnInit {
       }
       this.api.Login(x).subscribe(res=>{
          this.dataUser=res;
-         if(this.dataUser!=undefined){
+         console.log(res)
+         if(this.dataUser.length>0){
             for(var x=0; x<this.dataUser.length; x++){
               if(this.dataUser[x]['identificacion']!=undefined){
                 window.localStorage['IdUsuario']=this.dataUser[x]['identificacion'];   
                 this.route.navigate(['/home']);
               }
-             
             }
+         }
+         else{
+          this.errorAlert("Usuario o contraseñña incorrecto")
          }
       })
     
     }
    
+  }
+
+
+  async errorAlert(data){
+    const modal = await this.modal.create({
+      component: ErrorComponent,
+      cssClass: 'my-custom-modal-css-alert',
+      componentProps:{
+       data: data
+      },
+      showBackdrop:true,
+      backdropDismiss:false,
+    } )
+ 
+   return await modal.present();  
+ 
   }
 
 }

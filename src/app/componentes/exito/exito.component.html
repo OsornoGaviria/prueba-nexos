@@ -1,0 +1,43 @@
+<div class="content">
+  <div class="bola" >
+    <div   class="bola2" >
+      <ion-icon  name="checkmark-circle-outline"  color="success" ></ion-icon>
+    </div>
+</div>
+<div style="height: 5px;"></div>
+<div style="margin-top: 10px; width: 75% !important; margin:auto !important">
+        <p>Transacción Aprobada</p>
+  </div>
+  <div>
+    <ion-item-group>
+      <ion-item>
+        <ion-label><p><b>Fecha:</b> {{mensaje.fecha}}</p></ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><p><b>Id Transacción:</b> {{mensaje.numInt}}</p></ion-label>
+  </ion-item>
+      <ion-item>
+          <ion-label><p><b>Cuenta de Origen:</b> {{mensaje.origen}}</p></ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label><p><b>Cuenta de Destino:</b> {{mensaje.destino}}</p></ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><p><b>Valor:</b> ${{mensaje.valor|number}}</p></ion-label>
+  </ion-item>
+    </ion-item-group>
+
+
+  </div>
+  <div class="fna-div-button">
+          <div style="margin-top: 15px;"> 
+
+          <ion-button  expand="block" fill="outline" color="success" class="align-bottom" shape="round" 
+          (click)="cerrar()">Aceptar</ion-button>
+          
+
+        </div>
+        
+ </div>
+ <div style="height: 50px;"></div>
+</div>

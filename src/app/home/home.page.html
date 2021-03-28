@@ -25,9 +25,9 @@
           <ion-row>
             
           </ion-row>
-            <p *ngIf="producto.tipo==1"><b>Cuenta de Ahorros</b></p>
-            <p *ngIf="producto.tipo==2"><b>Cuenta de Corriente</b></p>
-            <p style="font-size:12px;">Número {{producto.numero}} | Saldo ${{producto.saldo | number}}</p>
+            <p *ngIf="producto.tipo==1"><b>Ahorros {{producto.numero}}</b></p>
+            <p *ngIf="producto.tipo==2"><b>Corriente {{producto.numero}}</b></p>
+            <p style="font-size:12px;">Saldo ${{producto.saldo | number}}</p>
          
         </ion-label>
         <ion-button slot="end" color="dark" (click)="movimientos(producto.numero)">Movimientos</ion-button>

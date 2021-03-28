@@ -4,13 +4,21 @@
       <ion-icon name="arrow-back-outline" color="light"></ion-icon>
     </ion-button> 
     <ion-title>
-        T. Cuentas Propias
+        Tranferencia
     </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <div  class="conta-text" >
+    <ion-label>
+      <h1 class="aling-text">
+        <b style="font-size: 35px; ">Cuentas Propias</b>
+      </h1>
+    </ion-label>
+    
+  </div>
   <ion-item>
-    <ion-label position="stacked">Producto Destino</ion-label>
+    <ion-label position="stacked">Producto Origen</ion-label>
     <ion-select interface="action-sheet" name="origen" [(ngModel)]="origen" (ionChange)="validaSaldoO()">
       <ion-select-option *ngFor="let p of productos" value="{{p.numero}}">
           <p *ngIf="p.tipo==1"> Cuenta Ahorros - {{p.numero}}</p>

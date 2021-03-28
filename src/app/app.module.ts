@@ -11,10 +11,12 @@ import { AppRoutingModule } from './app-routing.module';
 
 //Componentes
 import { MovimientosComponent } from './componentes/movimientos/movimientos.component'
+import { ErrorComponent } from './componentes/error/error.component'
+import { ExitoComponent } from './componentes/exito/exito.component'
 
 @NgModule({
-  declarations: [AppComponent, MovimientosComponent],
-  entryComponents: [MovimientosComponent],
+  declarations: [AppComponent, MovimientosComponent, ExitoComponent, ErrorComponent],
+  entryComponents: [MovimientosComponent, ExitoComponent, ErrorComponent],
   imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

@@ -1,0 +1,16 @@
+.conta-text{
+    height: 30%; 
+    background-color: #f1f1f1; 
+    text-align: center;
+}
+
+.aling-text{
+    margin: auto !important; 
+    margin-top: 50px; 
+    text-align: center;
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
