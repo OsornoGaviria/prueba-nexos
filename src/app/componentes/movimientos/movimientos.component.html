@@ -4,14 +4,23 @@
         <ion-icon name="close" color="light"></ion-icon>
     </ion-button>
     <ion-title>
-        Detalle Movimientos
+        Movimientos
     </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
+  <div  class="conta-text" >
+    <ion-label>
+      <h1 class="aling-text">
+        <b style="font-size: 35px; ">Movimientos</b>
+      </h1>
+    </ion-label>
+    
+  </div>
+  
   <div *ngIf="mov==1">
     <ion-item *ngFor="let movimiento of movimientos">
-      <ion-label  class="ion-text-wrap" >
+      <ion-label  class="ion-text-wrap" style="font-size:12px;" >
           <ion-col >{{movimiento.fecha}}</ion-col>
           <ion-col style="text-align: right;"  size=4 >{{movimiento.tipoMovimiento}}</ion-col>
           <ion-col>${{movimiento.valor|number}}</ion-col>

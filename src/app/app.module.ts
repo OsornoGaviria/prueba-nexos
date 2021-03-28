@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MovimientosComponent } from './componentes/movimientos/movimientos.component'
 import { ErrorComponent } from './componentes/error/error.component'
 import { ExitoComponent } from './componentes/exito/exito.component'
+import { Exito2Component } from './componentes/exito2/exito2.component';
 
 @NgModule({
   declarations: [AppComponent, MovimientosComponent, ExitoComponent, ErrorComponent],

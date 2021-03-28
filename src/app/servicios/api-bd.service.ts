@@ -61,6 +61,28 @@ export class ApiBDService {
     return this.http.post(this.apiUrl,JSON.stringify(data),{headers:headers});
   }
 
+
+  VerEntidades(data){
+    console.log(data)
+    var headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    return this.http.post(this.apiUrl,JSON.stringify(data),{headers:headers});
+  }
+
+  VerCuentas(data){
+    console.log(data)
+    var headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    return this.http.post(this.apiUrl,JSON.stringify(data),{headers:headers});
+  }
+
+  RegistrarCT(data){
+    console.log(data)
+    var headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    return this.http.post(this.apiUrl,JSON.stringify(data),{headers:headers});
+  }
+
   
 
 }

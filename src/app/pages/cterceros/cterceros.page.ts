@@ -41,7 +41,9 @@ export class CtercerosPage implements OnInit {
     }
     this.api.VerCterceros(y).subscribe(res=>{
        this.Cterceros=res;
-       
+      if(this.Cterceros.length>0){
+        this.x=1;
+      }
     })
   }
 
@@ -59,8 +61,8 @@ export class CtercerosPage implements OnInit {
   }
 
 
-  registrarT(){
-
+  rterceros(){
+    this.route.navigate(['/registrar-ct'])
   }
 
 

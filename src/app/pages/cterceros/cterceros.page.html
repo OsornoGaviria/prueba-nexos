@@ -18,6 +18,13 @@
     </ion-label>
     
   </div>
+  <div *ngIf="x==0">
+    <div style="margin-top: 20%; text-align: center;">
+      No se econtraton cuentas de terceros registradas. 
+      Para registrar una cuenta da click <b (click)="rterceros()">aquí</b>.
+    </div>
+  </div>
+ <div  *ngIf="x==1">
   <ion-item>
     <ion-label position="stacked">Producto Origen</ion-label>
     <ion-select interface="action-sheet" name="origen" [(ngModel)]="origen" (ionChange)="validaSaldoO()">
@@ -27,22 +34,23 @@
       </ion-select-option>
     </ion-select>
   </ion-item>
-<ion-item>
+ <ion-item>
   <ion-label position="stacked">Producto Destino</ion-label>
   <ion-select interface="action-sheet" name="destino"  [(ngModel)]="destino">
     <ion-select-option *ngFor="let p of Cterceros"   value="{{p.numero}}" >
         <p *ngIf="p.tipo==1"> Ahorros - {{p.alias}}</p>
-        <p *ngIf="p.tipo==2"> Corriente - {{p.numero}}</p>
+        <p *ngIf="p.tipo==2"> Corriente - {{p.alias}}</p>
     </ion-select-option>
   </ion-select>
 </ion-item>
 
 <ion-item>
   <ion-label position="stacked">Valor</ion-label>
-  <ion-input type="email" placeholder="$" [(ngModel)]="valor" name="valor"></ion-input>
+  <ion-input type="number" placeholder="$" [(ngModel)]="valor" name="valor"></ion-input>
 </ion-item>
 
 <div style="text-align: center; margin-top: 10px;">
   <ion-button (click)="aceptar()" color="dark">Aceptar</ion-button>
 </div>
+ </div>
 </ion-content>

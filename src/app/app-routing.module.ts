@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'cterceros',
     loadChildren: () => import('./pages/cterceros/cterceros.module').then( m => m.CtercerosPageModule)
   },
+  {
+    path: 'registrar-ct',
+    loadChildren: () => import('./pages/registrar-ct/registrar-ct.module').then( m => m.RegistrarCtPageModule)
+  },
 ];
 
 @NgModule({
